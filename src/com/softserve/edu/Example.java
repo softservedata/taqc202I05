@@ -40,12 +40,12 @@ public class Example {
         for (int i = 0; i < args.length; i++) {
             System.out.println("Arg " + i + " is " + args[i]);
         }
-        //
-        // end();
+
+         end();
         Example.end();
-        // ex.end();
-        // Thread.sleep(1000);
-        //
+         ex.end();
+         Thread.sleep(1000);
+
         byte b = 50;
         System.out.println("b = " + b + " (char) b = " + ((char) b));
         //
@@ -66,6 +66,7 @@ public class Example {
         System.out.println("k + 1 = " + (k + 1));
         sc.close();
         //
+        System.out.println("Hi team)");
     }
 
 }

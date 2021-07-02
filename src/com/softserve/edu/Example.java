@@ -24,7 +24,7 @@ public class Example {
     public static void main(String[] args) throws Exception {
         int k = 1;
         System.out.println("k = " + k);
-        System.out.println("Hello");
+        System.out.println("Hello team, my name is Sasha");
         Example ex = new Example();
         Example ex2 = new Example();
         ex.i = 123;
@@ -35,7 +35,7 @@ public class Example {
         ex2.myprint("ex2");
         //
         if (args.length > 0) {
-            System.out.println("Comman line arguments:");
+            System.out.println("Command line arguments:");
         }
         for (int i = 0; i < args.length; i++) {
             System.out.println("Arg " + i + " is " + args[i]);

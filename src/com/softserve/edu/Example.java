@@ -3,6 +3,7 @@ package com.softserve.edu;
 import java.util.Scanner;
 
 public class Example {
+    private static long start = System.currentTimeMillis();
     private int i; // = 0;
 
     public void myprint(String msg) {
@@ -13,7 +14,7 @@ public class Example {
      * <font color="red">Super End</font>
      */
     public static void end() {
-        System.out.println("done");
+        System.out.println("done in " + (System.currentTimeMillis() - start) + "ms");
     }
 
     /**
@@ -35,7 +36,7 @@ public class Example {
         ex2.myprint("ex2");
         //
         if (args.length > 0) {
-            System.out.println("Comman line arguments:");
+            System.out.println("Command line arguments:");
         }
         for (int i = 0; i < args.length; i++) {
             System.out.println("Arg " + i + " is " + args[i]);
@@ -60,6 +61,7 @@ public class Example {
         */
         //
         Scanner sc = new Scanner(System.in);
+        System.out.println("Input any integer and press 'ENTER':");
         System.out.print("k = ");
         String text = sc.nextLine();
         k = Integer.parseInt(text);

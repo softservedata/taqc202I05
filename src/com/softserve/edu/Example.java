@@ -65,7 +65,6 @@ public class Example {
         k = Integer.parseInt(text);
         System.out.println("k + 1 = " + (k + 1));
         sc.close();
-        //
     }
 
 }

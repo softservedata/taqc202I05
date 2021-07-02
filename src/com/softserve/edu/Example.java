@@ -24,7 +24,7 @@ public class Example {
     public static void main(String[] args) throws Exception {
         int k = 1;
         System.out.println("k = " + k);
-        System.out.println("Hello");
+        System.out.println("Hello Kate!");
         Example ex = new Example();
         Example ex2 = new Example();
         ex.i = 123;

@@ -128,4 +128,11 @@ public class WebElementTest {
 		presentationSleep(); // For Presentation ONLY
 		//
 	}
+	
+	@Test
+    public void checkPassword() {
+        System.out.println("***surefire.application.password = " + System.getProperty("surefire.application.password"));
+        System.out.println("***System.getenv().MY_PASSWORD = " + System.getenv().get("MY_PASSWORD"));
+        Assert.assertTrue(true);
+    }
 }

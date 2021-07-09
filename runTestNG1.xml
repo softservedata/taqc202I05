@@ -9,7 +9,8 @@
 			<!-- <class name="com.softserve.edu.opencart.tests.LoginTest" /> -->
 			<class name="com.softserve.edu.WebElementTest">
 				<methods>
-					<include name="checkWebElements" />
+					<!-- <include name="checkWebElements" /> -->
+					<include name="checkPassword" />
 				</methods>
 			</class>
 		</classes>

@@ -123,3 +123,6 @@ workspace.xml
 /node_modules/
 /**/node_modules/
 
+# maven
+pom.xml
+

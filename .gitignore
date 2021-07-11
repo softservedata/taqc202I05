@@ -124,5 +124,5 @@ workspace.xml
 /**/node_modules/
 
 # maven
-pom.xml
+#pom.xml
 

@@ -6,13 +6,13 @@
 	<!-- 3 ERROR 5 WARNING 7 INFO 9 TRACE -->
 	<test name="TestLogin" verbose="9">
 		<classes>
-			<!-- <class name="com.softserve.edu.opencart.tests.LoginTest" /> -->
-			<class name="com.softserve.edu.WebElementTest">
-				<methods>
+			<class name="com.softserve.edu.Browsers" />
+<!-- 			<class name="com.softserve.edu.WebElementTest"> -->
+<!-- 				<methods> -->
 					<!-- <include name="checkWebElements" /> -->
-					<include name="checkPassword" />
-				</methods>
-			</class>
+<!-- 					<include name="checkPassword" /> -->
+<!-- 				</methods> -->
+<!-- 			</class> -->
 		</classes>
 	</test> <!-- Test -->
 

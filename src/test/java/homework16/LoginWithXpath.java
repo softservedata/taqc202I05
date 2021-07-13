@@ -60,6 +60,6 @@ public class LoginWithXpath {
         List<String> expected = Arrays.asList("My Orders", "My Account", "Newsletter");
 
         Assert.assertTrue(headers.containsAll(expected),
-                "Failed to fined required headers. Have you logged in?");
+                "Failed to find required headers. Have you logged in?");
     }
 }

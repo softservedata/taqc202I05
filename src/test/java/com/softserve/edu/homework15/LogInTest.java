@@ -1,4 +1,4 @@
-package com.softserve.edu.homework14;
+package com.softserve.edu.homework15;
 
 import io.github.bonigarcia.wdm.WebDriverManager;
 import org.junit.*;
@@ -6,13 +6,12 @@ import org.openqa.selenium.By;
 import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.WebElement;
 import org.openqa.selenium.chrome.ChromeDriver;
-import org.openqa.selenium.firefox.FirefoxDriver;
 
 import java.util.concurrent.TimeUnit;
 
 public class LogInTest {
 
-    // Log in with Xpath
+    //Log in test with CSSS
 
     private static final String BASE_URL = "http://taqc-opencart.epizy.com/";
     private static final Long IMPLICITLY_WAIT_SECONDS = 10L;
@@ -67,7 +66,7 @@ public class LogInTest {
     @Test
     public void logInTest() {
         //open the "My account" dropdown menu
-        driver.findElement(By.xpath("//a[@title='My Account']")).click();
+        driver.findElement(By.cssSelector("a[title='My Account']")).click();
         presentationSleep(); // For Presentation ONLY
 
         //choose log in
@@ -75,25 +74,24 @@ public class LogInTest {
         presentationSleep(); // For Presentation ONLY
 
         //choose email field and enter password
-        driver.findElement(By.xpath("//*[@id='input-email']")).click();
-        driver.findElement(By.xpath("//*[@id='input-email']")).clear();
-        driver.findElement(By.xpath("//*[@id='input-email']")).sendKeys("hahaha@gmail.com");
+        driver.findElement(By.cssSelector("#input-email")).click();
+        driver.findElement(By.cssSelector("#input-email")).clear();
+        driver.findElement(By.cssSelector("#input-email")).sendKeys("hahaha@gmail.com");
         presentationSleep();
 
         //choose password field and enter password
-        driver.findElement(By.xpath("//*[@id='input-password']")).click();
-        driver.findElement(By.xpath("//*[@id='input-password']")).clear();
-        driver.findElement(By.xpath("//*[@id='input-password']")).sendKeys("qwerty");
+        driver.findElement(By.cssSelector("#input-password")).click();
+        driver.findElement(By.cssSelector("#input-password")).clear();
+        driver.findElement(By.cssSelector("#input-password")).sendKeys("qwerty");
         presentationSleep();
 
         //click the "Login" button
-        driver.findElement(By.xpath("//input[@class='btn btn-primary']")).click();
+        driver.findElement(By.cssSelector("input.btn.btn-primary")).click();
         presentationSleep();
 
         //check a user is logged in
-        WebElement text = driver.findElement(By.xpath("//div[@id='content']/h2[text()='My Account']"));
+        WebElement text = driver.findElement(By.cssSelector("div#content h2:nth-of-type(1)"));
         Assert.assertTrue(text.getText().contains("My Account"));
         presentationSleep();
     }
-
 }

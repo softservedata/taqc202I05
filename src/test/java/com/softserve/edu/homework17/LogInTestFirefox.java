@@ -1,4 +1,4 @@
-package com.softserve.edu.homework14;
+package com.softserve.edu.homework17;
 
 import io.github.bonigarcia.wdm.WebDriverManager;
 import org.junit.*;
@@ -7,12 +7,11 @@ import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.WebElement;
 import org.openqa.selenium.chrome.ChromeDriver;
 import org.openqa.selenium.firefox.FirefoxDriver;
+import org.openqa.selenium.firefox.FirefoxOptions;
 
 import java.util.concurrent.TimeUnit;
 
-public class LogInTest {
-
-    // Log in with Xpath
+public class LogInTestFirefox {
 
     private static final String BASE_URL = "http://taqc-opencart.epizy.com/";
     private static final Long IMPLICITLY_WAIT_SECONDS = 10L;
@@ -36,11 +35,14 @@ public class LogInTest {
     @BeforeClass
     public static void setUpBeforeClass() throws Exception {
         System.out.println("@BeforeClass");
-        WebDriverManager.chromedriver().setup();
-//         WebDriverManager.firefoxdriver().setup();
+//        WebDriverManager.chromedriver().setup();
+         WebDriverManager.firefoxdriver().setup();
 
-//         driver = new FirefoxDriver();
-        driver = new ChromeDriver();
+        FirefoxOptions firefoxOptions = new FirefoxOptions();
+        firefoxOptions.addArguments("--headless");
+        driver = new FirefoxDriver(firefoxOptions);
+
+//        driver = new ChromeDriver();
         driver.manage().timeouts().implicitlyWait(IMPLICITLY_WAIT_SECONDS, TimeUnit.SECONDS);
         driver.manage().window().maximize();
         presentationSleep(); // For Presentation ONLY
@@ -71,7 +73,8 @@ public class LogInTest {
         presentationSleep(); // For Presentation ONLY
 
         //choose log in
-        driver.findElement(By.cssSelector("a[href*='route=account/login']")).click();
+//        driver.findElement(By.cssSelector("a[href*='route=account/login']")).click();
+        driver.findElement(By.linkText("Login")).click();
         presentationSleep(); // For Presentation ONLY
 
         //choose email field and enter password

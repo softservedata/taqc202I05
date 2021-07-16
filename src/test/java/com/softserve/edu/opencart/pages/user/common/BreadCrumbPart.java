@@ -1,17 +1,11 @@
 package com.softserve.edu.opencart.pages.user.common;
 
-import java.util.List;
-
 import org.openqa.selenium.WebDriver;
 
-public class ProductsContainer {
+public class BreadCrumbPart extends TopPart {
 
-    private WebDriver driver;
-    //
-    private List<ProductComponent> productComponents;
-
-    public ProductsContainer(WebDriver driver) {
-        this.driver = driver;
+    public BreadCrumbPart(WebDriver driver) {
+        super(driver);
         initElements();
     }
 
@@ -24,5 +18,5 @@ public class ProductsContainer {
     // Functional
 
     // Business Logic
-
+    
 }

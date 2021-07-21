@@ -4,6 +4,8 @@ import org.openqa.selenium.By;
 import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.WebElement;
 
+import com.softserve.edu.opencart.data.Currencies;
+import com.softserve.edu.opencart.data.Product;
 import com.softserve.edu.opencart.pages.user.common.ProductsContainer;
 import com.softserve.edu.opencart.pages.user.common.TopPart;
 
@@ -57,10 +59,18 @@ public class HomePage extends TopPart {
 
     // Business Logic
 
-    //public HomePage chooseCurrency(Currencies currency) {
-    public HomePage chooseCurrency(String currency) {
+    //public HomePage chooseCurrency(String currency) {
+    public HomePage chooseCurrency(Currencies currency) {
         clickCurrencyByPartialName(currency);
         return new HomePage(driver);
     }
 
+    public HomePage scrollToProduct(Product product) {
+        WebElement webElement = getProductComponentsContainer()
+                .getProductComponentByName(product.getName())
+                .getName();
+        scrollToElement(webElement);
+        return new HomePage(driver);
+    }
+    
 }

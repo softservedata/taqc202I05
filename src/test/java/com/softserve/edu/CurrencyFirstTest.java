@@ -14,6 +14,8 @@ import org.testng.annotations.BeforeMethod;
 import org.testng.annotations.BeforeSuite;
 import org.testng.annotations.Test;
 
+import com.softserve.edu.opencart.data.Currencies;
+import com.softserve.edu.opencart.data.ProductRepository;
 import com.softserve.edu.opencart.pages.user.HomePage;
 
 import io.github.bonigarcia.wdm.WebDriverManager;
@@ -88,9 +90,11 @@ public class CurrencyFirstTest {
     public void testCurrencyHomePage() {
         // Steps
         HomePage homepage = new HomePage(driver);
-        homepage = homepage.chooseCurrency("Pound Sterling");
+        //homepage = homepage.chooseCurrency("Pound Sterling");
+        homepage = homepage.chooseCurrency(Currencies.POUND_STERLING);
         presentationSleep(); // For Presentation ONLY
-        homepage = homepage.chooseCurrency("US Dollar");
+        //homepage = homepage.chooseCurrency("US Dollar");
+        homepage = homepage.chooseCurrency(Currencies.US_DOLLAR);
         presentationSleep(); // For Presentation ONLY
         // Check
         System.out.println("Actual: " + homepage.getCurrencyText());
@@ -104,15 +108,24 @@ public class CurrencyFirstTest {
     public void testMacHomePage() {
         // Steps
         HomePage homepage = new HomePage(driver);
-        homepage = homepage.chooseCurrency("US Dollar");
+        //homepage = homepage.chooseCurrency("US Dollar");
+        homepage = homepage.chooseCurrency(Currencies.US_DOLLAR);
         presentationSleep(); // For Presentation ONLY
         //
         System.out.println(
-                "Actual: " + homepage.getProductComponentsContainer().getProductComponentPriceByName("MacBook"));
+                "Actual: " + homepage
+                .getProductComponentsContainer()
+                //.getProductComponentPriceByName("MacBook")
+                .getProductComponentPriceByName(ProductRepository.getMacBook())
+        );
         System.out.println("Expected: " + "$602.00");
         presentationSleep(); // For Presentation ONLY
         Assert.assertTrue(
-                homepage.getProductComponentsContainer().getProductComponentPriceByName("MacBook").contains("$602.00"));
+                homepage
+                .getProductComponentsContainer()
+                //.getProductComponentPriceByName("MacBook")
+                .getProductComponentPriceByName(ProductRepository.getMacBook())
+                .contains("$602.00"));
         presentationSleep(); // For Presentation ONLY
     }
 

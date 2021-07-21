@@ -66,7 +66,7 @@ public class ScrolleTest {
         action.moveToElement(linkProject).perform();
         Thread.sleep(2000); // For Presentation Only
         // */
-        /*
+        /*-
         // Scrolling by JavaScript injection
         ((JavascriptExecutor) driver).executeScript("arguments[0].scrollIntoView(true);", linkProject);
         Thread.sleep(2000); // For Presentation Only

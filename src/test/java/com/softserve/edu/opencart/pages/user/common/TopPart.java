@@ -3,9 +3,12 @@ package com.softserve.edu.opencart.pages.user.common;
 import java.util.List;
 
 import org.openqa.selenium.By;
+import org.openqa.selenium.JavascriptExecutor;
 import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.WebElement;
+import org.openqa.selenium.interactions.Actions;
 
+import com.softserve.edu.opencart.data.Currencies;
 import com.softserve.edu.opencart.pages.user.HomePage;
 import com.softserve.edu.opencart.pages.user.account.AccountLogoutPage;
 import com.softserve.edu.opencart.pages.user.account.LoginPage;
@@ -307,11 +310,11 @@ public abstract class TopPart {
         createDropdownComponent(By.cssSelector(LIST_CURRENCIES_CSSSELECTOR));
     }
 
-    protected void clickCurrencyByPartialName(String currencyName) { // Code Smell
-        //protected void clickCurrencyByPartialName(Currencies optionName) {
+    //protected void clickCurrencyByPartialName(String currencyName) { // Code Smell
+    protected void clickCurrencyByPartialName(Currencies optionName) {
         openCurrencyDropdownComponent();
-        clickDropdownComponentByPartialName(currencyName);
-        //clickDropdownComponentByPartialName(optionName.toString());
+        //clickDropdownComponentByPartialName(currencyName);
+        clickDropdownComponentByPartialName(optionName.toString());
     }
 
     public List<String> getListCurrencyNames() {
@@ -334,6 +337,12 @@ public abstract class TopPart {
         clickSearchTopField();
         clearSearchTopField();
         setSearchTopField(searchText);
+    }
+    
+    protected void scrollToElement(WebElement webElement) {
+//        Actions action = new Actions(driver);       
+//        action.moveToElement(webElement).perform();
+        ((JavascriptExecutor) driver).executeScript("arguments[0].scrollIntoView(true);", webElement);
     }
 
     /*-

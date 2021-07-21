@@ -7,6 +7,8 @@ import org.openqa.selenium.By;
 import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.WebElement;
 
+import com.softserve.edu.opencart.data.Product;
+
 public class ProductsContainer {
 
     public final String PRODUCT_NOT_FOUND = "There is no product that matches the search criteria.";
@@ -53,7 +55,7 @@ public class ProductsContainer {
         return productComponentNames;
     }
 
-    protected ProductComponent getProductComponentByName(String productName)
+    public ProductComponent getProductComponentByName(String productName)
     {
         ProductComponent result = null;
         for (ProductComponent current : getProductComponents())
@@ -75,9 +77,11 @@ public class ProductsContainer {
     }
 
     // TODO Move to Product
-    public String getProductComponentPriceByName(String productName)
+    //public String getProductComponentPriceByName(String productName)
+    public String getProductComponentPriceByName(Product productName)
     {
-        return getProductComponentByName(productName).getPriceText();
+        //return getProductComponentByName(productName).getPriceText();
+        return getProductComponentByName(productName.getName()).getPriceText();
     }
 
     // TODO Move to Product

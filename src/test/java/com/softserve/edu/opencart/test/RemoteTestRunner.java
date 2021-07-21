@@ -8,6 +8,8 @@ import java.nio.file.Paths;
 import java.nio.file.StandardOpenOption;
 import java.text.SimpleDateFormat;
 import java.util.Date;
+import java.util.HashMap;
+import java.util.Map;
 import java.util.concurrent.TimeUnit;
 
 import org.apache.commons.io.FileUtils;
@@ -33,10 +35,19 @@ public abstract class RemoteTestRunner {
     private final Long IMPLICITLY_WAIT_SECONDS = 10L;
     private final Long ONE_SECOND_DELAY = 1000L;
     private final String TIME_TEMPLATE = "yyyy-MM-dd_HH-mm-ss-S";
-    private WebDriver driver; // TODO
+    // private WebDriver driver; // TODO
+    private Map<Long, WebDriver> drivers;
 
     protected WebDriver getDriver() {
-        return driver;
+        WebDriver currentWebDriver = drivers.get(Thread.currentThread().getId());
+        if (currentWebDriver == null) {
+            currentWebDriver = new ChromeDriver();
+            currentWebDriver.manage().timeouts().implicitlyWait(IMPLICITLY_WAIT_SECONDS, TimeUnit.SECONDS);
+            //currentWebDriver.manage().window().maximize();
+            drivers.put(Thread.currentThread().getId(), currentWebDriver);
+        }
+        return currentWebDriver;
+        // return driver;
     }
     
     protected void presentationSleep() {
@@ -68,27 +79,34 @@ public abstract class RemoteTestRunner {
 
     @BeforeSuite
     public void beforeSuite() {
+        drivers = new HashMap<>();
         WebDriverManager.chromedriver().setup();
         // WebDriverManager.firefoxdriver().setup();
     }
 
     @BeforeClass
     public void beforeClass() {
-        driver = new ChromeDriver();
-        driver.manage().timeouts().implicitlyWait(IMPLICITLY_WAIT_SECONDS, TimeUnit.SECONDS);
-        driver.manage().window().maximize();
+        //driver = new ChromeDriver();
+        //driver.manage().timeouts().implicitlyWait(IMPLICITLY_WAIT_SECONDS, TimeUnit.SECONDS);
+        //driver.manage().window().maximize();
     }
 
     @AfterClass(alwaysRun = true)
     public void afterClass() {
         presentationSleep(); // For Presentation ONLY
         // driver.close();
-        driver.quit();
+        //driver.quit();
+        for (Map.Entry<Long, WebDriver> currentWebDriver : drivers.entrySet()) {
+            if (currentWebDriver.getValue() != null) {
+                currentWebDriver.getValue().quit();
+            }
+        }
     }
 
     @BeforeMethod
     public void beforeMethod() {
-        driver.get(BASE_URL);
+        //driver.get(BASE_URL);
+        getDriver().get(BASE_URL);
         presentationSleep(); // For Presentation ONLY
     }
 
@@ -114,7 +132,8 @@ public abstract class RemoteTestRunner {
         }
         // driver.findElement(By.cssSelector("#logo .img-responsive")).click();
         // driver.findElement(By.cssSelector("#logo > a")).click();
-        driver.findElement(By.xpath("//img[contains(@src, '/logo.png')]/..")).click();
+        // driver.findElement(By.xpath("//img[contains(@src, '/logo.png')]/..")).click();
+        getDriver().findElement(By.xpath("//img[contains(@src, '/logo.png')]/..")).click();
         presentationSleep(); // For Presentation ONLY
     }
     

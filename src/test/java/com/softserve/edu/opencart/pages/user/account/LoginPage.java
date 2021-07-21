@@ -4,7 +4,9 @@ import org.openqa.selenium.By;
 import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.WebElement;
 
+import com.softserve.edu.opencart.data.Currencies;
 import com.softserve.edu.opencart.data.IUser;
+import com.softserve.edu.opencart.pages.user.HomePage;
 
 public class LoginPage extends AccountSidebarGuestPart {
 
@@ -112,4 +114,8 @@ public class LoginPage extends AccountSidebarGuestPart {
         return new UnsuccessfulLoginPage(driver);
     }
 
+    public LoginPage chooseCurrency(Currencies currency) {
+        clickCurrencyByPartialName(currency);
+        return new LoginPage(driver);
+    }
 }

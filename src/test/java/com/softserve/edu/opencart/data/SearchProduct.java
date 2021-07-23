@@ -65,5 +65,15 @@ public class SearchProduct {
     public String getPrice() {
         return getProduct().getPrice(getCurrency());
     }
+
+    @Override
+    public String toString() {
+        return "SearchProduct [searchText=" + searchText
+                + ", category=" + category 
+                + ", searchInSubcategories=" + searchInSubcategories
+                + ", currency=" + currency.toString()
+                + ", product=" + product.toString() + "]";
+    }
+    
     
 }

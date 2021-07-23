@@ -18,6 +18,8 @@ import org.openqa.selenium.OutputType;
 import org.openqa.selenium.TakesScreenshot;
 import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.chrome.ChromeDriver;
+import org.slf4j.Logger;
+import org.slf4j.LoggerFactory;
 import org.testng.ITestResult;
 import org.testng.annotations.AfterClass;
 import org.testng.annotations.AfterMethod;
@@ -35,6 +37,7 @@ public abstract class RemoteTestRunner {
     private final Long IMPLICITLY_WAIT_SECONDS = 10L;
     private final Long ONE_SECOND_DELAY = 1000L;
     private final String TIME_TEMPLATE = "yyyy-MM-dd_HH-mm-ss-S";
+    protected final Logger logger = LoggerFactory.getLogger(this.getClass());
     // private WebDriver driver; // TODO
     private Map<Long, WebDriver> drivers;
 
@@ -117,7 +120,8 @@ public abstract class RemoteTestRunner {
         // Save Screen;
         if (!result.isSuccess()) {
             String testName = result.getName();
-            System.out.println("***TC error, name = " + testName + " ERROR");
+            //System.out.println("***TC error, name = " + testName + " ERROR");
+            logger.error("***TC error, name = " + testName + " ERROR");
             // Take Screenshot, save sourceCode, save to log, prepare report, Return to;
             // previous state, logout, etc.
             try {

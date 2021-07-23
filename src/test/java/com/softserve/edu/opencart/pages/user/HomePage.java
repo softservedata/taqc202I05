@@ -61,7 +61,9 @@ public class HomePage extends TopPart {
 
     //public HomePage chooseCurrency(String currency) {
     public HomePage chooseCurrency(Currencies currency) {
+        logger.debug("start chooseCurrency() with currency = " + currency.toString());
         clickCurrencyByPartialName(currency);
+        logger.debug("end chooseCurrency() with currency = " + currency.toString());
         return new HomePage(driver);
     }
 

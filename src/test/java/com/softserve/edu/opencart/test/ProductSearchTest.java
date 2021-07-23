@@ -21,6 +21,7 @@ public class ProductSearchTest extends RemoteTestRunner {
 
     @Test(dataProvider = "searchProducts")
     public void checkFirst(SearchProduct searchProduct) {
+        logger.info("start checkFirst() with searchProduct = " + searchProduct.toString());
         //
         // Steps
         HomePage homePage = loadApplication()

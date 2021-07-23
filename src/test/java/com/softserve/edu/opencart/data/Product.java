@@ -57,4 +57,12 @@ public class Product {
         return prices.get(currency);
     }
 
+    @Override
+    public String toString() {
+        return "Product [name=" + name 
+                + ", description=" + description 
+                + ", priceDollarExTax=" + priceDollarExTax
+                + ", prices=" + prices + "]";
+    }
+
 }

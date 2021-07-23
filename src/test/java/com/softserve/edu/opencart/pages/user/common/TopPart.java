@@ -7,6 +7,8 @@ import org.openqa.selenium.JavascriptExecutor;
 import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.WebElement;
 import org.openqa.selenium.interactions.Actions;
+import org.slf4j.Logger;
+import org.slf4j.LoggerFactory;
 
 import com.softserve.edu.opencart.data.Currencies;
 import com.softserve.edu.opencart.pages.user.HomePage;
@@ -26,6 +28,7 @@ public abstract class TopPart {
     protected final String LIST_CURRENCIES_CSSSELECTOR = "div.btn-group.open ul.dropdown-menu li";
     protected final String DROPDOWN_MYACCOUNT_CSSSELECTOR = ".dropdown-menu-right li";
     //
+    protected final Logger logger = LoggerFactory.getLogger(this.getClass());
     protected WebDriver driver;
     //
     private WebElement currency;
